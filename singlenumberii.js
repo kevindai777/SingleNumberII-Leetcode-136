@@ -34,7 +34,7 @@ for (let num of nums) {
     //third appearance: don't add to seenOnce since it's in seenTwice, remove from seenTwice
 
     //NOT seen_twice AND (CHANGE seen_once)
-    //NOT seen_once AND (change seen_twice)
+    //NOT seen_once AND (CHANGE seen_twice)
     seenOnce = ~seenTwice & (seenOnce ^ num)
     seenTwice = ~seenOnce & (seenTwice ^ num)
 }
