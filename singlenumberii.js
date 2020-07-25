@@ -21,3 +21,22 @@ for (let [key,value] of Object.entries(map)) {
         return key
     }
 }
+
+
+//O(n) solution that uses NOT, AND, and XOR to find the unique element
+
+let seenOnce = 0
+let seenTwice = 0
+
+for (let num of nums) {
+    //first appearance: add to seenOnce, don't update seenTwice
+    //second appearance: remove from seenOnce, add to seenTwice
+    //third appearance: don't add to seenOnce since it's in seenTwice, remove from seenTwice
+
+    //NOT seen_twice AND (CHANGE seen_once)
+    //NOT seen_once AND (change seen_twice)
+    seenOnce = ~seenTwice & (seenOnce ^ num)
+    seenTwice = ~seenOnce & (seenTwice ^ num)
+}
+
+return seenOnce
